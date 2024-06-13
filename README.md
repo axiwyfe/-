@@ -15,7 +15,7 @@ def wiki_page(page_name):
 
 
 
-bot = telebot.TeleBot('7413655356:AAHumwWbbhBvfRMwtPV1TaFTvwrtD33E3wU')
+bot = telebot.TeleBot('...')
 
 
 @bot.callback_query_handler(func=lambda call: call.data)
