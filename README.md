@@ -15,50 +15,7 @@ def wiki_page(page_name):
 
 
 
-bot = telebot.TeleBot('ячс')
-
-
-@bot.callback_query_handler(func=lambda call: call.data)
-def answer(call):
-    title, summery, url = wiki_page(call.data)
-    bot.send_message(call.message.chat.id, text=title)
-    bot.send_message(call.message.chat.id, text=summery)
-    bot.send_message(call.message.chat.id, text=url)
-
-@bot.message_handler(commands=['wiki'])
-def duck(message):
-    text = ' '.join(message.text.split(' ')[1:])
-    results = search_wiki(text)
-    markup = types.InlineKeyboardMarkup()
-    for res in results:
-        markup.add(types.InlineKeyboardButton(res, callback_data=res))
-    bot.send_message(message.chat.id, text='Смотри, что я нашел', reply_markup=markup)
-
-
-@bot.message_handler(content_types=['voice'])
-def voice_message(message: types.Message):
-    if(message.voice):
-        bot.send_message(message.chat.id, "use command 'help'")
-
-@bot.message_handler(content_types=['photo'])
-def photo_message(message: types.Message):
-    if(message.photo):
-        bot.send_message(message.chat.id, "use command 'help'")import telebot
-from telebot import types
-import wikipedia
-
-
-wikipedia.set_lang('ru')
-
-def search_wiki(query):
-    return wikipedia.search(query)
-
-
-def wiki_page(page_name):
-    page = wikipedia.page(page_name)
-    return page.title, page.summary, page.url
-
-
+bot = telebot.TeleBot('7413655356:AAHumwWbbhBvfRMwtPV1TaFTvwrtD33E3wU')
 
 
 @bot.callback_query_handler(func=lambda call: call.data)
@@ -103,4 +60,3 @@ def get_help(message):
 
 
 bot.polling(none_stop=True)
-
